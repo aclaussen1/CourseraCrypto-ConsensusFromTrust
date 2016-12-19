@@ -14,14 +14,14 @@ public class Simulation {
    public static void main(String[] args) {
 
       // There are four required command line arguments: p_graph (.1, .2, .3),
-      // p_malicious (.15, .30, .45), p_txDistribution (.01, .05, .10), 
+      // p_malicious (.15, .30, .45), p_txDistribution (.01, .05, .10),
       // and numRounds (10, 20). You should try to test your CompliantNode
       // code for all 3x3x3x2 = 54 combinations.
 
       int numNodes = 100;
       double p_graph = Double.parseDouble(args[0]); // parameter for random graph: prob. that an edge will exist
       double p_malicious = Double.parseDouble(args[1]); // prob. that a node will be set to be malicious
-      double p_txDistribution = Double.parseDouble(args[2]); // probability of assigning an initial transaction to each node 
+      double p_txDistribution = Double.parseDouble(args[2]); // probability of assigning an initial transaction to each node
       int numRounds = Integer.parseInt(args[3]); // number of simulation rounds your nodes will run for
 
       // pick which nodes are malicious and which are compliant
@@ -30,7 +30,7 @@ public class Simulation {
          if(Math.random() < p_malicious)
             // When you are ready to try testing with malicious nodes, replace the
             // instantiation below with an instantiation of a MaliciousNode
-            nodes[i] = new MalDoNothing(p_graph, p_malicious, p_txDistribution, numRounds);
+            nodes[i] = new MaliciousNode(p_graph, p_malicious, p_txDistribution, numRounds);
          else
             nodes[i] = new CompliantNode(p_graph, p_malicious, p_txDistribution, numRounds);
       }
@@ -96,7 +96,7 @@ public class Simulation {
                 	  Set<Candidate> candidates = new HashSet<>();
                 	  allProposals.put(j, candidates);
                   }
-                  
+
                   Candidate candidate = new Candidate(tx, i);
                   allProposals.get(j).add(candidate);
                }
@@ -125,4 +125,3 @@ public class Simulation {
 
 
 }
-
