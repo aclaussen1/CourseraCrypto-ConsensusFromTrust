@@ -6,8 +6,11 @@ Nodes in the network are either compliant or malicious. The objective is to writ
 The graph of nodes will have the following parameters:
 
 the pairwise connectivity probability of the random graph: e.g. {.1, .2, .3}
+
 the probability that a node will be set to be malicious: e.g {.15, .30, .45}
+
 the probability that each of the initial valid transactions will be communicated: e.g. {.01, .05, .10}
+
 the number of rounds in the simulation e.g. {10, 20}
 
 
@@ -16,7 +19,9 @@ the number of rounds in the simulation e.g. {10, 20}
 Run the following commands (with the arguments in the last line selected from the options above):
 
 git clone https://github.com/aclaussen1/CourseraCrypto-ConsensusFromTrust.git
+
 javac Simulation.java
+
 java Simulation .1 .15 .05 10
 
 
