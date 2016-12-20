@@ -8,28 +8,34 @@ public class CompliantNode implements Node {
     public double p_malicious;
     public double p_txDistribution;
     public int numRounds;
+    public boolean[] followees;
+    public Set<Transaction> pendingTransactions;
 
     public CompliantNode(double p_graph, double p_malicious, double p_txDistribution, int numRounds) {
         this.p_graph= p_graph;
         this.p_malicious = p_malicious;
         this.p_txDistribution = p_txDistribution;
         this.numRounds = numRounds;
+        this.pendingTransactions = new HashSet<Transaction>();
     }
 
     public void setFollowees(boolean[] followees) {
-        // IMPLEMENT THIS
+        this.followees = followees;
     }
 
     public void setPendingTransaction(Set<Transaction> pendingTransactions) {
-        // IMPLEMENT THIS
+        for(Transaction tx: pendingTransactions) {
+          this.pendingTransactions.add(tx);
+        }
     }
 
     public Set<Transaction> sendToFollowers() {
-        Set<Transaction> followers = new HashSet<Transaction>();
-        return followers;
+        return this.pendingTransactions;
     }
 
     public void receiveFromFollowees(Set<Candidate> candidates) {
-        // IMPLEMENT THIS
+        for(Candidate c: candidates) {
+          this.pendingTransactions.add(c.tx);
+        }
     }
 }
